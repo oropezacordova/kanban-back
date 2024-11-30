@@ -19,20 +19,20 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column
+    @Column(name = "id")
     private String id;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column(unique = true)
+    @Column(name = "email", unique = true)
     private String email;
-    @Column
+    @Column(name = "password")
     private String password;
-    @Column
+    @Column(name = "profile_picture")
     private String profilePicture;
     @CreationTimestamp
-    @Column
+    @Column(name = "create_at")
     private LocalDateTime createAt;
     @UpdateTimestamp
-    @Column
+    @Column(name = "update_at")
     private LocalDateTime updateAt;
 }

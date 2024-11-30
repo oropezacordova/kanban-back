@@ -11,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,22 +22,23 @@ import lombok.Data;
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column
+    @Column(name = "id")
     private String id;
-    @Column
+    @Column(name = "title")
     private String title;
-    @Column
+    @Column(name = "description", length = 1000)
     private String description;
-    @Column
+    @Column(name = "due_date")
     private LocalDate dueDate;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "stage_id", nullable = false)
     private Stage stage;
-    @Column
+    @Column(name = "position")
     private int position;
     @CreationTimestamp
-    @Column
+    @Column(name = "create_at")
     private LocalDateTime createAt;
     @UpdateTimestamp
-    @Column
+    @Column(name = "update_at")
     private LocalDateTime updateAt;
 }
